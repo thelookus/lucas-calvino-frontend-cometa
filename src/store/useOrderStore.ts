@@ -11,7 +11,7 @@ export interface OrderState {
 
     // Las acciones ahora usan los servicios
     fetchOrders: () => Promise<void>
-    createOrder: (order: Order) => Promise<void>
+    createOrder: (order: Omit<Order, 'id'>) => Promise<void>
     updateOrder: (orderId: string, orderData: Partial<Order>) => Promise<void>
     // Acciones locales del estado
     setCurrentOrder: (order: Order | null) => void
@@ -29,6 +29,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
             const orders = await orderService.getOrders()
             set({ orders, error: null })
         } catch (error) {
+            console.error('Error fetching orders:', error) // Log para debug
             set({ error: error as Error })
         } finally {
             set({ isLoading: false })

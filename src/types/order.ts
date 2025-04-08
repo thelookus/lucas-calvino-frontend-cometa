@@ -6,7 +6,8 @@ export interface OrderItem {
 
 export interface RoundItem {
     name: string
-    quantity: number
+    quantity?: number
+    price?: number
 }
 
 export interface Round {
@@ -15,6 +16,7 @@ export interface Round {
 }
 
 export interface Order {
+    id: string
     created: string
     paid: boolean
     subtotal: number

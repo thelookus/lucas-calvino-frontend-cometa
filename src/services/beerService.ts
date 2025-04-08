@@ -1,23 +1,16 @@
-import { collection, getDocs, updateDoc, doc } from 'firebase/firestore'
-import { db } from '@/lib/firebase'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '@/config/firebase'
 import { Stock } from '@/types'
 
 export const beerService = {
-    async getStock() {
+    async getStock(): Promise<Stock> {
         try {
             const querySnapshot = await getDocs(collection(db, 'stock'))
-            return querySnapshot.docs[0].data() as Stock
+            const stockDoc = querySnapshot.docs[0]
+            return stockDoc.data() as Stock
         } catch (error) {
-            throw new Error(`Error fetching stock: ${error}`)
-        }
-    },
-
-    async updateBeerQuantity(beerId: string, quantity: number) {
-        try {
-            const beerRef = doc(db, 'beers', beerId)
-            await updateDoc(beerRef, { quantity })
-        } catch (error) {
-            throw new Error(`Error updating beer quantity: ${error}`)
+            console.error('Error fetching stock:', error)
+            throw error
         }
     }
 }
