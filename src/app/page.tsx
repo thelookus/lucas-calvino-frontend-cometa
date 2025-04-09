@@ -22,7 +22,7 @@ export default function Home() {
     <main className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Bar de Cervezas</h1>
 
-      {/* Lista de cervezas disponibles */}
+      {/* Beer List */}
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-4">Cervezas Disponibles</h2>
         <div className="grid grid-cols-3 gap-4">
@@ -35,7 +35,7 @@ export default function Home() {
                 className="bg-blue-500 text-white px-4 py-2 mt-2"
                 disabled={beer.quantity === 0}
                 onClick={() => {
-                  // Aquí irá la lógica para agregar a la orden
+                  // Logic to add to order
                 }}
               >
                 Agregar a la orden
@@ -45,7 +45,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Lista de órdenes */}
+      {/* Order List */}
       <section>
       <h2 className="text-xl font-semibold mb-4">Órdenes</h2>
         <div className="space-y-4">

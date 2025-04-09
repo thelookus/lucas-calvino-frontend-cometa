@@ -9,11 +9,10 @@ export interface OrderState {
     isLoading: boolean
     error: Error | null
 
-    // Las acciones ahora usan los servicios
     fetchOrders: () => Promise<void>
     createOrder: (order: Omit<Order, 'id'>) => Promise<void>
     updateOrder: (orderId: string, orderData: Partial<Order>) => Promise<void>
-    // Acciones locales del estado
+    // Local State Actions
     setCurrentOrder: (order: Order | null) => void
 }
 
@@ -29,7 +28,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
             const orders = await orderService.getOrders()
             set({ orders, error: null })
         } catch (error) {
-            console.error('Error fetching orders:', error) // Log para debug
+            console.error('Error fetching orders:', error) // Debug
             set({ error: error as Error })
         } finally {
             set({ isLoading: false })
@@ -40,7 +39,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
             try {
             set({ isLoading: true })
             await orderService.createOrder(order)
-            await get().fetchOrders() // Refetch después de crear
+            await get().fetchOrders() // Refetch after creating
         } catch (error) {
             set({ error: error as Error })
         } finally {
@@ -52,7 +51,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
         try {
             set({ isLoading: true })
             await orderService.updateOrder(orderId, orderData)
-            await get().fetchOrders() // Refetch después de actualizar
+            await get().fetchOrders() // Refetch after updating
         } catch (error) {
             set({ error: error as Error })
         } finally {
