@@ -1,7 +1,9 @@
 export interface OrderItem {
     name: string
     price_per_unit: number
+    quantity: number
     total: number
+    thumbnailUrl?: string
 }
 
 export interface RoundItem {
@@ -24,4 +26,5 @@ export interface Order {
     discounts: number
     items: OrderItem[]
     rounds: Round[]
+    cancelled?: boolean
 }
