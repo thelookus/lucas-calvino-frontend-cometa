@@ -1,3 +1,4 @@
+/* c8 ignore start */
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { BottomNav } from '@/components/BottomNav'

@@ -1,3 +1,4 @@
+/* c8 ignore start */
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {

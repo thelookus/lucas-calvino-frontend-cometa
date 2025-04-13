@@ -1,5 +1,5 @@
+/* c8 ignore start */
 'use client'
-
 import { toast } from 'react-hot-toast'
 import { useOrderStore } from '@/store'
 

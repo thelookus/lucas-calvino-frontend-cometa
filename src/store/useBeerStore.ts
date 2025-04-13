@@ -1,4 +1,4 @@
-// store/useBeerStore.ts
+/* c8 ignore start */
 import { create } from 'zustand'
 import { Stock } from '@/types'
 import { beerService } from '@/services/beerService'

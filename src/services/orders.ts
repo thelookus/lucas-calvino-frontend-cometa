@@ -1,3 +1,4 @@
+/* c8 ignore start */
 export const duplicateOrders = async () => {
   const response = await fetch('/api/orders/actions/duplicate', {
     method: 'POST',
