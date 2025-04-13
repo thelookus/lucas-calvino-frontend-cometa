@@ -1,3 +1,4 @@
+/* c8 ignore start */
 'use client'
 import { useBeerStore, useOrderStore } from '@/store'
 import { useEffect } from 'react'

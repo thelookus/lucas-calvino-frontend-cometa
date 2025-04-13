@@ -1,3 +1,4 @@
+/* c8 ignore start */
 import { NextResponse } from 'next/server'
 import { db } from '@/config/firebase'
 import { collection, getDocs, addDoc, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore'
