@@ -4,7 +4,7 @@ Una prueba de concepto para una aplicación de un bar de cervezas que demuestra 
 
 ## 🚀 Demo en Vivo
 
-Visita la aplicación desplegada en [URL de Vercel]
+Visita la aplicación desplegada en <a href="https://lucas-calvino-frontend-cometa-git-main-lucas-projects-ea3434e8.vercel.app" target="_blank">Vercel URL</a>
 
 ## 🛠 Stack Tecnológico
 
