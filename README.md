@@ -4,7 +4,7 @@ A proof of concept for a beer store application that demonstrates modern web dev
 
 ## 🚀 Live Demo
 
-Visit the deployed application at [Vercel URL]
+Visit the deployed application at <a href="https://lucas-calvino-frontend-cometa-git-main-lucas-projects-ea3434e8.vercel.app" target="_blank">Vercel URL</a>
 
 ## 🛠 Tech Stack
 
