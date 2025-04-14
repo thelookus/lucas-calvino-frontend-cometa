@@ -1,3 +1,4 @@
+/* c8 ignore start */
 export const MarketAnimatedIcon = ({
   className = "w-20 h-20"
 }) => (

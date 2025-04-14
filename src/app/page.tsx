@@ -57,14 +57,15 @@ export default function Home() {
 
       <main className="min-h-screen flex flex-col">
         <div className="px-6 pb-12 text-sm font-light">
-          Hi and Welcome!
+          Welcome to this <b>POC</b> for a beer store!
           <br />
-          This is a <b>POC</b> for a beer store.
+          Please, see the code in my <a href="https://github.com/thelookus/lucas-calvino-frontend-cometa" target="_blank" rel="noopener noreferrer"><b>GitHub</b></a>.
           <br />
-          You can see the code in my <a href="https://github.com/thelookus/lucas-calvino-frontend-cometa" target="_blank" rel="noopener noreferrer">GitHub</a>.
+          Since this is a POC, I focused in:
           <br />
-          Since this is a POC, most of functionality is not ready yet, however,
-          I&apos;ve implemented the feature to <b>fetch the stock and order data</b> from Firebase..
+          - <b>fetch the stock and order data</b> from Firebase.
+          - <b>design a mobile-first interface</b>.
+          <br />
           I hope you like it! :)
         </div>
         <Tabs

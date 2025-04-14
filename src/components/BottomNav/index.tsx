@@ -18,7 +18,7 @@ export const BottomNav = () => {
   const hasActiveOrders = getActiveOrders().length > 0
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-15 px-13 bg-[var(--background)]">
+    <nav className="fixed bottom-0 left-0 right-0 h-15 px-13 bg-[var(--background)]" data-scroll-ignore>
       <div className="max-w-screen-xl mx-auto h-full flex justify-between items-center">
         <Link
           href="/"

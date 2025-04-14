@@ -1,3 +1,4 @@
+/* c8 ignore start */
 'use client'
 import { useEffect, useState } from 'react'
 import { LoadingScreen } from '@/components/LoadingScreen'

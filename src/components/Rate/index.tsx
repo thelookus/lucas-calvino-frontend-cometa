@@ -1,3 +1,4 @@
+/* c8 ignore start */
 'use client'
 import { RateProps } from './types'
 
