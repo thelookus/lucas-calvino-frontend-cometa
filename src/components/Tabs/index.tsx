@@ -21,7 +21,9 @@ export const Tabs = ({ tabs, activeTab, onTabChange }: TabsProps) => {
         {tabs.map((tab, index) => (
           <button
             key={tab.key}
-            ref={el => (tabRefs.current[index] = el)}
+            ref={(el) => {
+              tabRefs.current[index] = el;
+            }}
             onClick={() => onTabChange(tab.key)}
             className={`
               py-3 first:ml-6 text-sm

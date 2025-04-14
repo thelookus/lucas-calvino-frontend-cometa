@@ -31,7 +31,7 @@ export const OrderList = ({ past = false }) => {
           thumbnailUrl={order.items[0]?.thumbnailUrl}
           index={index}
           cancelled={order.cancelled}
-          created={order.created ? formatDate(order.created) : null}
+          created={order.created ? formatDate(order.created) : undefined}
           onClick={() => console.log('Clicked on order')}
         />
       ))}

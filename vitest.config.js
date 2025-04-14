@@ -5,11 +5,14 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: 'jsdom',
     globals: true,
+    environment: 'jsdom',
     setupFiles: './src/__tests__/setup.ts',
+    css: false,
+  },
+  resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-    }
+    },
   },
 })

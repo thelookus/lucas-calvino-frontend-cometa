@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { Stock } from '@/types'
 import { beerService } from '@/services/beerService'
 
-interface BeerState {
+export interface BeerState {
     stock: Stock | null
     isLoading: boolean
     error: Error | null

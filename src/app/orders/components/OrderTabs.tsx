@@ -13,11 +13,15 @@ export const OrderTabs = ({ activeTab, onTabChange }: OrderTabsProps) => {
     { key: 'past', label: 'Past Orders' },
   ]
 
+  const handleTabChange = (tabKey: string) => {
+    onTabChange(tabKey as TabType)
+  }
+
   return (
     <Tabs
       tabs={tabs}
       activeTab={activeTab}
-      onTabChange={onTabChange}
+      onTabChange={handleTabChange}
     />
   )
 }
