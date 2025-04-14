@@ -1,81 +1,92 @@
 /* c8 ignore start */
 'use client'
-import { useBeerStore, useOrderStore } from '@/store'
-import { useEffect } from 'react'
+import { useBeerStore } from '@/store'
+import { useEffect, useState } from 'react'
+import { LoadingScreen } from '@/components/LoadingScreen'
+import { Header } from '@/components/Header'
+import { ProductCard } from '@/components/ProductCard'
+import { Tabs } from '@/components/Tabs'
+
+type FilterType = 'new' | 'popular' | 'recommended'
 
 export default function Home() {
-  const { stock, isLoading: isLoadingBeers } = useBeerStore()
-  const { orders, isLoading: isLoadingOrders } = useOrderStore()
+  const { stock, isLoading, fetchStock } = useBeerStore()
+  const [activeFilter, setActiveFilter] = useState<FilterType>('new')
 
   useEffect(() => {
-    const loadData = async () => {
-        await useBeerStore.getState().fetchStock()
-        await useOrderStore.getState().fetchOrders()
-    }
-    loadData()
-  }, [])
+    fetchStock()
+  }, [fetchStock])
 
-  if (isLoadingBeers || isLoadingOrders) {
-    return <div>Cargando...</div>
+  const tabs = [
+    { key: 'new', label: 'New Taste' },
+    { key: 'popular', label: 'Popular' },
+    { key: 'recommended', label: 'Recommended' },
+  ]
+
+  const getFilteredBeers = () => {
+    if (!stock?.beers) return []
+
+    const beersWithRatings = stock.beers.map(beer => ({
+      ...beer,
+      rating: (Math.random() * 2 + 3)
+    }))
+
+    switch (activeFilter) {
+      case 'new':
+        return beersWithRatings
+      case 'popular':
+        return beersWithRatings.filter(beer => beer.price > 500)
+      case 'recommended':
+        return beersWithRatings.filter(beer => beer.quantity > 5)
+      default:
+        return beersWithRatings
+    }
+  }
+
+  if (isLoading) {
+    return <LoadingScreen />
   }
 
   return (
-    <main className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Bar de Cervezas</h1>
+    <div>
+      <Header
+        title="Beer Store"
+        subtitle="Choose your favorite beer"
+        showProfile={true}
+      />
 
-      {/* Beer List */}
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">Cervezas Disponibles</h2>
-        <div className="grid grid-cols-3 gap-4">
-          {stock?.beers.map((beer) => (
-            <div key={beer.name} className="border p-4">
-              <h3 className="font-semibold">{beer.name}</h3>
-              <p>Precio: ${beer.price}</p>
-              <p>Disponibles: {beer.quantity}</p>
-              <button
-                className="bg-blue-500 text-white px-4 py-2 mt-2"
-                disabled={beer.quantity === 0}
-                onClick={() => {
-                  // Logic to add to order
-                }}
-              >
-                Agregar a la orden
-              </button>
-            </div>
+      <main className="min-h-screen flex flex-col">
+        <div className="px-6 pb-12 text-sm font-light">
+          Hi and Welcome!
+          <br />
+          This is a <b>POC</b> for a beer store.
+          <br />
+          You can see the code in my <a href="https://github.com/thelookus/lucas-calvino-frontend-cometa" target="_blank" rel="noopener noreferrer">GitHub</a>.
+          <br />
+          Since this is a POC, most of functionality is not ready yet, however,
+          I&apos;ve implemented the feature to <b>fetch the stock and order data</b> from Firebase..
+          I hope you like it! :)
+        </div>
+        <Tabs
+          tabs={tabs}
+          activeTab={activeFilter}
+          onTabChange={(tab) => setActiveFilter(tab as FilterType)}
+        />
+
+        <div className="mt-2 px-6">
+          {getFilteredBeers().map((beer, index) => (
+            <ProductCard
+              key={beer.name}
+              name={beer.name}
+              total={beer.price}
+              thumbnailUrl={beer.thumbnailUrl}
+              index={index}
+              rating={beer.rating}
+              onClick={() => console.log('Clicked on beer:', beer.name)}
+            />
           ))}
         </div>
-      </section>
-
-      {/* Order List */}
-      <section>
-      <h2 className="text-xl font-semibold mb-4">Órdenes</h2>
-        <div className="space-y-4">
-          {orders && orders.length > 0 ? (
-            orders.map((order) => (
-              <div key={order.id} className="border p-4">
-                <p>Fecha: {new Date(order.created).toLocaleDateString()}</p>
-                <p>Estado: {order.paid ? 'Pagada' : 'Pendiente'}</p>
-                <p>Subtotal: ${order.subtotal}</p>
-                <div className="mt-2">
-                  <h4 className="font-semibold">Rondas:</h4>
-                  {order.rounds.map((round, index) => (
-                    <div key={index} className="ml-4">
-                      <p>Ronda {index + 1}:</p>
-                      {round.items.map(item => (
-                        <p key={item.name} className="ml-2">
-                          - {item.name}: {item.quantity}
-                        </p>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>No hay órdenes disponibles</p>
-          )}
-        </div>
-      </section>
-    </main>
+      </main>
+    </div>
   )
 }

@@ -1,6 +1,8 @@
+'use client'
 import { ProductCardProps } from './types'
 import Image from 'next/image'
 import { useState } from 'react'
+import { Rate } from '@/components/Rate'
 
 const getValidImageUrl = (url: string | undefined) => {
   if (!url) return '/images/placeholder.png'
@@ -22,6 +24,7 @@ export const ProductCard = ({
   index,
   created,
   cancelled,
+  rating = 0,
   onClick
 }: ProductCardProps) => {
   const [imageError, setImageError] = useState(false)
@@ -61,20 +64,30 @@ export const ProductCard = ({
 
       <div className="flex-1">
         <h3 className="text-base font-normal">{name || 'Product'}</h3>
-        <div className="flex text-[0.8125rem] items-center gap-1 color-font-light">
-          <span>{quantity} {quantity === 1 ? 'item' : 'items'}</span>
-          <span>•</span>
-          <span>$ {total.toLocaleString()}</span>
+        {quantity !== undefined && (
+          <div className="flex text-[0.8125rem] items-center gap-1 color-font-light">
+            <span>{quantity} {quantity === 1 ? 'item' : 'items'}</span>
+            <span>•</span>
+            <span>$ {total.toLocaleString()}</span>
+          </div>
+        )}
+        {!quantity && (
+          <div className="text-[0.8125rem] color-font-light">
+            <span>$ {total.toLocaleString()}</span>
+          </div>
+        )}
+      </div>
+      {rating > 0 && <Rate score={rating} />}
+      {created && (
+        <div className="flex flex-col items-end text-[0.625rem] color-font-light">
+          <span className="">
+            {created}
+          </span>
+          <span className="color-font-warning">
+            {cancelled && 'Cancelled'}
+          </span>
         </div>
-      </div>
-      <div className="flex flex-col items-end text-[0.625rem] color-font-light">
-        <span className="">
-          {created}
-        </span>
-        <span className="color-font-warning">
-          {cancelled && 'Cancelled'}
-        </span>
-      </div>
+      )}
     </div>
   )
 }

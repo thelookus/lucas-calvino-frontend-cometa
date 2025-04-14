@@ -39,7 +39,7 @@ export const BottomNav = () => {
               <>
                 <OrderOutlineIcon className='w-8 h-8'/>
                 {hasActiveOrders && !pathname.includes('/orders') && (
-                  <span className="absolute -top-[-7px] -right-[-7px] w-[6px] h-[6px] bg-[#FF5C00] rounded-full" data-testid="notification-dot" />
+                  <span className="absolute -top-[-7px] -right-[-7px] w-[6px] h-[6px] bg-[var(--color-font-warning)] rounded-full" data-testid="notification-dot" />
                 )}
               </>
             )
