@@ -1,20 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Beer Store App
 
-## Getting Started
+A proof of concept for a beer store application that demonstrates modern web development practices and optimizations.
 
-First, run the development server:
+## 🚀 Live Demo
 
+Visit the deployed application at [Vercel URL]
+
+## 🛠 Tech Stack
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type safety and better developer experience
+- **Tailwind CSS** - Utility-first styling
+- **Zustand** - State management
+- **Firebase** - Backend and data storage
+- **Vitest** - Testing framework
+
+## ✨ Features & Technical Decisions
+
+### Core Features
+- Order management system with paid/unpaid filters
+- Real-time stock updates
+- Responsive design optimized for mobile
+
+### Code Quality
+- TypeScript for type safety
+- Component-based architecture
+- Custom hooks for business logic
+- Unit tests with Vitest
+- ESLint & Prettier configuration
+
+### Performance Optimizations
+- Next.js App Router for better routing and performance
+- Image optimization with next/image
+- Component lazy loading
+- Efficient state management with Zustand
+- Firebase SDK optimization
+
+### UI/UX Enhancements
+- Loading states with custom animations
+- Shimmer effects on hover
+- Smooth transitions between states
+- Reusable components (Tabs, Rate, ProductCard)
+- Responsive layout with Tailwind CSS
+
+## 🏃‍♂️ Running the Project
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/thelookus/lucas-calvino-frontend-cometa.git
+cd lucas-calvino-frontend-cometa
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env.local
+# Add your Firebase configuration
+```
+
+4. Run development server
+```bash
+npm run dev
+```
+
+5. Run tests
+```bash
+npm test
+```
+
+## 📝 Project Structure
+
+```
+src/
+├── app/          # Next.js App Router pages
+├── components/   # Reusable components
+├── store/        # Zustand store configurations
+├── services/     # External service integrations
+├── types/        # TypeScript type definitions
+├── utils/        # Helper functions
+└── __tests__/    # Test files
+```
+
+## 🎯 Future Improvements
+
+- Implement user authentication
+- Add cart functionality
+- Enhance test coverage
+- Add more animations and transitions
+- Implement error boundaries
+
+## 👨‍💻 Author
+
+Lucas Calviño
 
 ## Environment Variables
 
@@ -36,8 +117,3 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Preguntas
-
-1 - En la estructura `order` de la base de datos, el array `items` contiene 3 elementos, pero el 2do elemento difiere de los otros 2 ya que en lugar de tener `name` y `quantity`, tiene `name` y `price`. ¿Es un error? ¿Es algo esperable y hay que atajarlo en el front?
-

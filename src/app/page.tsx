@@ -26,15 +26,14 @@ export default function Home() {
   const getFilteredBeers = () => {
     if (!stock?.beers) return []
 
-    // Agregamos ratings simulados a las cervezas
     const beersWithRatings = stock.beers.map(beer => ({
       ...beer,
-      rating: (Math.random() * 2 + 3) // Genera un rating entre 3.0 y 5.0
+      rating: (Math.random() * 2 + 3)
     }))
 
     switch (activeFilter) {
       case 'new':
-        return beersWithRatings.slice(0, 2)
+        return beersWithRatings
       case 'popular':
         return beersWithRatings.filter(beer => beer.price > 500)
       case 'recommended':
@@ -57,7 +56,7 @@ export default function Home() {
       />
 
       <main className="min-h-screen flex flex-col">
-        <div className="px-6 pt-4 pb-14 text-sm font-light">
+        <div className="px-6 pb-12 text-sm font-light">
           Hi and Welcome!
           <br />
           This is a <b>POC</b> for a beer store.
