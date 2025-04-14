@@ -12,6 +12,11 @@ const poppins = Poppins({
 export const metadata = {
   title: "Beer Store POC",
   description: "A proof of concept for a beer store application",
+  icons: {
+    icon: "/images/favicon.ico",
+    shortcut: "/images/favicon.ico",
+    apple: "/images/favicon.ico",
+  },
 }
 
 export default function RootLayout({
