@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.className} font-normal`} suppressHydrationWarning>
-      <body className={poppins.className} suppressHydrationWarning>
+      <body className={`${poppins.className} md:max-w-[480px] md:mx-auto`} suppressHydrationWarning>
         {children}
         <BottomNav />
       </body>
