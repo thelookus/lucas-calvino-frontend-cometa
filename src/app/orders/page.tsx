@@ -7,6 +7,7 @@ import { OrderList } from './components/OrderList'
 import { TabType } from './types'
 import { useBeerStore, useOrderStore } from '@/store'
 import { useEffect } from 'react'
+import { LoadingScreen } from '@/components/LoadingScreen'
 
 export default function OrdersPage() {
   const [activeTab, setActiveTab] = useState<TabType>('in-progress')
@@ -22,7 +23,7 @@ export default function OrdersPage() {
   }, [])
 
   if (isLoadingBeers || isLoadingOrders) {
-    return <div>Cargando...</div>
+    return <LoadingScreen />
   }
 
   return (

@@ -3,6 +3,11 @@ import OrdersPage from '@/app/orders/page'
 import { useBeerStore, useOrderStore } from '@/store'
 import { vi } from 'vitest'
 
+// Mock the LoadingScreen component
+vi.mock('@/components/LoadingScreen', () => ({
+  LoadingScreen: () => <div data-testid="loading-screen">Loading...</div>
+}))
+
 vi.mock('@/store', () => ({
   useBeerStore: vi.fn(),
   useOrderStore: vi.fn()
@@ -47,7 +52,7 @@ describe('OrdersPage', () => {
     })
 
     render(<OrdersPage />)
-    expect(screen.getByText('Cargando...')).toBeInTheDocument()
+    expect(screen.getByTestId('loading-screen')).toBeInTheDocument()
   })
 
   it('renders main content when data is loaded', () => {

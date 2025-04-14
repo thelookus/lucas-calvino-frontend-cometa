@@ -1,10 +1,11 @@
 export interface ProductCardProps {
   name: string
   total: number
-  index: number
-  quantity: number
+  quantity?: number
   thumbnailUrl?: string
-  created?: string | null
+  index: number
+  created?: string
   cancelled?: boolean
+  rating?: number
   onClick?: () => void
 }
